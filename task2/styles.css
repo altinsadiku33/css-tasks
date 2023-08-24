@@ -1,0 +1,371 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header, footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+.three-d-element {
+    perspective: 800px;
+}
+
+.cube {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotate 6s infinite linear;
+}
+
+.side {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.side:nth-child(1) {
+    transform: rotateY(0deg) translateZ(50px);
+}
+
+.side:nth-child(2) {
+    transform: rotateY(180deg) translateZ(50px);
+}
+
+.side:nth-child(3) {
+    transform: rotateX(90deg) translateZ(50px);
+}
+
+.side:nth-child(4) {
+    transform: rotateX(-90deg) translateZ(50px);
+}
+
+.side:nth-child(5) {
+    transform: rotateY(90deg) translateZ(50px);
+}
+
+.side:nth-child(6) {
+    transform: rotateY(-90deg) translateZ(50px);
+}
+
+@keyframes rotate {
+    from {
+        transform: rotateY(0);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+/*
+CURSOR
+*/
+.cursor-area {
+    width: 300px;
+    height: 150px;
+    text-align: center;
+    padding: 2rem;
+    cursor: pointer;
+    background-image: url("deer.jpg");
+    background-size: contain;
+    color: #3498db;
+}
+
+.cursor-area:hover {
+    cursor: url('aim.png'), auto;
+}
+
+/*
+*/
+.container {
+    position: relative;
+}
+
+
+.slider-container {
+    position: relative;
+    width: 300px;
+}
+
+.slider {
+    width: 100%;
+    -webkit-appearance: none;
+    background: linear-gradient(to right, #3498db, #3ce7d3);
+    outline: none;
+    height: 10px;
+    border-radius: 5px;
+    transition: transform 0.3s, background-color 0.3s;
+    transform-origin: left center;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    background-image: radial-gradient(circle, #3498db, #3ce7d3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s, background-image 0.3s;
+    transform-origin: center center;
+}
+
+.slider-container:hover .slider::-webkit-slider-thumb {
+    transform: scale(1.2);
+    background-image: radial-gradient(circle, #3ce7d3, #3498db);
+}
+
+.slider:active {
+    transform: scale(1.2);
+    background-color: #3ce7d3;
+}
+
+.slider:active::-webkit-slider-thumb {
+    transform: scale(1.5);
+}
+
+
+.box-1 {
+    height: 33.33%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FF6766;
+    margin: 30px 0;
+}
+
+.btn {
+    line-height: 50px;
+    height: 50px;
+    text-align: center;
+    width: 250px;
+    cursor: pointer;
+    color: #FFF;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.btn span {
+    transition: all 0.3s;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.3s;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-top-color: rgba(255, 255, 255, 0.5);
+    border-bottom-color: rgba(255, 255, 255, 0.5);
+    transform: scale(0.1, 1);
+}
+
+.btn:hover span {
+    letter-spacing: 2px;
+}
+
+.btn:hover::before {
+    opacity: 1;
+    transform: scale(1, 1);
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transition: all 0.3s;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn:hover::after {
+    opacity: 0;
+    transform: scale(0.1, 1);
+}
+
+
+.row {
+    display: table-row;
+}
+
+.toggle-button-cover {
+    display: table-cell;
+    position: relative;
+    width: 200px;
+    height: 140px;
+    box-sizing: border-box;
+}
+
+.button-cover {
+    height: 100px;
+    margin: 20px;
+    background-color: #fff;
+    box-shadow: 0 10px 20px -8px #c5d6d6;
+    border-radius: 4px;
+}
+
+.button-cover:before {
+    counter-increment: button-counter;
+    content: counter(button-counter);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: #d7e3e3;
+    font-size: 12px;
+    line-height: 1;
+    padding: 5px;
+}
+
+.button-cover,
+.knobs,
+.layer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.button {
+    position: relative;
+    top: 50%;
+    width: 74px;
+    height: 36px;
+    margin: -20px auto 0 auto;
+    overflow: hidden;
+}
+
+.button.r,
+.button.r .layer {
+    border-radius: 100px;
+}
+
+.button.b2 {
+    border-radius: 2px;
+}
+
+.checkbox {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.knobs {
+    z-index: 2;
+}
+
+.layer {
+    width: 100%;
+    background-color: #ebf7fc;
+    transition: 0.3s ease all;
+    z-index: 1;
+}
+
+/* Button 18 */
+#button-18 .knobs:before,
+#button-18 .knobs span {
+    content: "YES";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1;
+    background-color: #03a9f4;
+    border-radius: 2px;
+}
+
+#button-18 .knobs:before {
+    top: 50%;
+    left: 8px;
+    width: 20px;
+    height: 10px;
+    margin-top: -5px;
+    background-color: transparent;
+    z-index: 2;
+}
+
+#button-18 .knobs span {
+    width: 20px;
+    height: 10px;
+    padding: 9px 4px;
+    transition: 0.3s ease all, left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
+    z-index: 1;
+}
+
+#button-18 .checkbox:active + .knobs:before {
+    left: 10px;
+    width: 46px;
+    height: 4px;
+    color: transparent;
+    margin-top: -2px;
+    background-color: #0095d8;
+    transition: 0.3s ease all;
+    overflow: hidden;
+}
+
+#button-18 .checkbox:active + .knobs span {
+    width: 58px;
+}
+
+#button-18 .checkbox:checked:active + .knobs:before {
+    left: auto;
+    right: 10px;
+    background-color: #d80000;
+}
+
+#button-18 .checkbox:checked:active + .knobs span {
+    margin-left: -38px;
+}
+
+#button-18 .checkbox:checked + .knobs:before {
+    content: "NO";
+    left: 47px;
+}
+
+#button-18 .checkbox:checked + .knobs span {
+    left: 42px;
+    background-color: #f44336;
+}
+
+#button-18 .checkbox:checked ~ .layer {
+    background-color: #fcebeb;
+}
